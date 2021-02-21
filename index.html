@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tic-Tac-Toe</title>
+       <!--*********FONT*******-->
+        <link rel="stylesheet" href="https://fonts.google.com/specimen/Lato?selection.family=Lato:wght@100;300;400;700">
+        <!--FONT AWESOME-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+       <!--NORMALIZE.CSS-->
+        <link rel="stylesheet" href="normalize.css" >
+        <!--app.css-->
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <div class="container">
+            <!--<div class="image-X">
+               <img src="images/X.png" alt="">
+            </div>  -->        
+            <h1 class="text-center main-heading heading" ><span>T</span>IC-<span>T</span>AC-<span>T</span>OE</h1>
+                <div class="rules-box">
+                  <h4 class="heading" ><span>G</span>AME <span>R</span>ULES:</h4>
+                       <ul>
+                        <li >
+                            <span class="fa fa-hand-o-right"></span> The game is played on a grid that's 3 squares by 3 squares.
+                        </li>
+                        <li>
+                            <span class="fa fa-hand-o-right"></span> One of the player is  'X' and other is 'O'.
+                        </li>
+                        <li>
+                            <span class="fa fa-hand-o-right"></span> The first player to get 3 of his/her marks in a row (up, down, across, or diagonally) is the winner.
+                        </li>
+                        <li>
+                           <span class="fa fa-hand-o-right"></span> When all 9 squares are full, the game is over.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                       <div id="turn" class="turn text-center">
+                           <span>X's or O's Turn</span>
+                       </div>
+                        <div id="game-boxes" class="col game-boxes">
+                            <div  id="box1" class="box b-l-n b-t-n"><span></span></div>
+                            <div  id="box2" class="box b-t-n"><span></span></div>
+                            <div  id="box3" class="box b-t-n b-r-n"><span></span></div>
+                            <div  id="box4" class="box b-l-n"><span></span></div>
+                            <div  id="box5" class="box"><span></span></div>
+                            <div  id="box6" class="box b-r-n"><span></span></div>
+                            <div  id="box7" class="box b-l-n b-b-n "><span></span></div>
+                            <div  id="box8" class="box b-b-n "><span></span></div>
+                            <div  id="box9" class="box b-r-n b-b-n"><span></span></div>
+                            <div id="gameover" class="gameover form-card "></div>
+                            <div id="options" class="options form-card ">
+                                <p>X player</p>
+                                <label class="checkbox">Human
+                                      <input type="radio" name="X-radio">
+                                      <span class="checkmark"></span>
+                                    </label>
+
+                                    <label class="checkbox">Computer
+                                      <input type="radio" name="X-radio">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                <p>O Player</p>
+                                <label class="checkbox">Human
+                                      <input type="radio" name="Y-radio">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <label class="checkbox">Computer
+                                      <input type="radio"name="Y-radio">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                <button class="btn btn-continue">Continue</button>
+                            </div>
+                        </div>
+                         
+                        <div class="card-content">
+                           <div id="Start-Game" class="Start-Game btn" >Start Game
+                           </div>
+                            <div id="score" class="score">
+                                <span id="score-X" >X: 0 |</span>
+                                <span id="score-Y" >O: 0 </span>
+                            </div>
+                    </div>
+                </div>
+        </div>
+        <script src="app.js" type="text/javascript" ></script>        
+    </body>
+</html>

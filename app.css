@@ -1,0 +1,436 @@
+body{
+    font-family: Lato, sans-serif;
+    margin: 0;
+    background: #000;
+}
+::selection{
+    background: #FFF;
+    color: #000;
+}
+::-webkit-scrollbar{
+    width: 12px;
+}
+::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0 0 0 .2);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: #FFF;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:window-inactive{
+    background: rgba(0,0,0,.3);   
+}
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------HELPER STYLES-------------------------------------------------------------------------------------------------------------------------------------------------*/
+.text-center{
+    text-align: center;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.p-0{
+    padding: 0;
+}
+
+.p-10{
+    padding: 10!important;
+}
+
+
+.p-20{
+    padding: 20;
+}
+
+
+.p-30{
+    padding: 30;
+}
+
+p-t-0{
+    padding-top: 0;
+}
+.p-40{
+    padding: 40;
+}
+
+
+.p-t-10{
+    padding: 10;
+}
+
+.p-b-10{
+    padding: 10;
+}
+.m-0{
+    margin: 0;
+}
+
+.m-10{
+    margin: 10;
+}
+
+.m-20{
+    margin: 20;
+}
+
+.m-30{
+    margin: 30;
+}
+
+.m-40{
+    margin: 40;
+}
+m-t-0{
+    margin-top: 0;
+}
+
+
+/**********************MY CSS****************************/
+
+.X span{
+    font-size: 6rem;
+    color: #FFF;
+    position: fixed;
+    top: 30%;
+}
+.O span{
+    font-size: 6rem;
+    color: #FFF;
+    position: fixed;
+    top: 50%;
+}
+.container{
+    margin: 0 10rem;
+    padding: 2.5rem 4rem;
+}
+
+.main-heading{
+    text-decoration: underline;
+    font-size: 3.5rem;
+    color: #888;
+    margin-top: 0;
+}
+.heading span{
+    color: #333;
+}
+.rules-box h4{
+    color: #888;
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+.rules-box ul li{
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    list-style: none;
+    color: aqua;
+}
+.rules-box ul li span{
+    color: #FFF;
+}
+.card{
+    margin: 2rem 4rem;
+    padding: 1rem;
+    background-color: #FFF;
+    border: solid 8px #444;
+    border-radius: 4px;
+    position: relative;
+}
+.turn{
+    font-size: 2rem;
+/*    display: none;*/
+}
+.turn:hover{
+    cursor: context-menu;
+}
+.card-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.3rem;
+}
+.card-content .score{
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    border: solid 2px #000;    
+    border-radius: 4px; 
+    background-color: #333;
+    color: #FFF;
+}
+.card-content .score:hover{
+    cursor: context-menu;
+}
+.btn{
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: solid 2px #000;    
+    border-radius: 4px; 
+    background-color: #333;
+    color: #FFF;
+    user-select:none;
+}
+.btn:hover{
+    background-color: #000;
+    color: aqua;
+    cursor: pointer;
+    border: solid 2px aqua;
+    user-select:none;
+
+}
+.game-boxes{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 2rem;
+    justify-content: center;
+}
+.form-card{
+    position: absolute;
+    cursor: context-menu;
+    user-select: none;
+    background-color: #444;
+    border: solid 4px #000;
+    font-size: 1.5rem;
+    color: aqua;
+    padding: 2rem;
+    margin: 2rem;
+}
+.options{
+    padding: 1rem 4rem;
+}
+.btn-continue{
+    font-size: 1rem;
+    margin: .5rem;
+}
+/* Customize the label (the container) */
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #222;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkbox .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+.box{
+    background: #FFF;
+    color: #000;
+    border: solid 4px #333; 
+    width: 6rem;
+    height: 6rem;
+}
+.b-t-n{
+    border-top: solid 2px #FFF;
+}
+.b-b-n{
+    border-bottom: none;
+}
+.b-l-n{
+    border-left: none;
+}
+.b-r-n{
+    border-right: none;
+}
+.box span{
+    margin:2rem;
+    line-height: 4rem;
+    width: 100%;
+    font-size: 4rem;
+    height: 100%;
+}
+.box:hover{
+  box-shadow: 0px 0px 25px 0px 	rgb(0,0,0,0.8);
+  cursor: pointer;
+}
+@media(min-width: 1201px) and (max-width: 1400px){
+    .container{
+        margin: auto;
+    }
+}
+
+@media(min-width: 1000px) and (max-width: 1200px){
+    .main-heading{
+        font-size: 3.2rem;
+    }
+    .rules-box h4{
+        font-size: 1.8rem;
+    }
+    .rules-box ul li{
+        font-size: 1.2rem;
+    }
+    .container{
+        width: 70%;
+        margin:auto;
+    }
+    .card{
+        margin: auto;
+    }
+    .card-content .score{
+        font-size: 1rem;
+    }
+    .card-content .btn{
+        font-size: 1rem;
+    }
+}
+@media(min-width: 962px) and (max-width: 999px){
+     .main-heading{
+        font-size: 3.0rem;
+    }
+        .rules-box h4{
+        font-size: 1.5rem;
+    }
+        .rules-box ul li{
+        font-size: 1.0rem;
+    }
+    .container{
+        width: 60%;
+        margin:auto;
+    }
+    .card{
+        margin:auto;
+    }
+   .card-content .score{
+        font-size: .8rem;
+    }
+    .card-content .btn{
+        font-size: .8rem;
+    }
+}
+@media(min-width: 760px) and (max-width: 961px){
+     .main-heading{
+        font-size: 2.5rem;
+    }
+    .rules-box h4{
+        font-size: 1.2rem;
+    }
+        .rules-box ul li{
+        font-size: .8rem;
+    }
+    .container{
+        width: 57%;
+        margin:auto;
+    }
+    .card{
+        width: 80%;
+        margin:auto;
+    }
+   .card-content .score{
+        font-size: .8rem;
+    }
+    .card-content .btn{
+        font-size: .8rem;
+    }
+}
+@media(min-width: 614px) and (max-width: 759px){
+     .main-heading{
+        font-size: 2rem;
+    }
+      .rules-box h4{
+        font-size: .9rem;
+    }
+        .rules-box ul li{
+        font-size: .7rem;
+    }
+    .container{
+        width: 80%;
+        margin:auto;
+    }
+    .card{
+        width: 70%;
+        margin:auto;
+    }
+   .card-content .score{
+        font-size: .6rem;
+    }
+    .card-content .btn{
+        font-size: .6rem;
+    }
+}
+@media(min-width: 500px) and (max-width: 714px){
+     .main-heading{
+        font-size: 1.8rem;
+    }
+      .rules-box h4{
+        font-size: .9rem;
+    }
+        .rules-box ul li{
+        font-size: .7rem;
+    }
+    .container{
+        width: 77%;
+        margin:auto;
+    }
+    .card{
+        width: 90%;
+        margin:auto;
+    }
+   .card-content .score{
+        font-size: .6rem;
+    }
+    .card-content .btn{
+        font-size: .6rem;
+    }
+}
