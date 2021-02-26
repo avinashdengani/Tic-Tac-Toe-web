@@ -37,50 +37,43 @@
                 </div>
                 <div class="card">
                        <div id="turn" class="turn text-center">
-                           <span>X's or O's Turn</span>
                        </div>
                         <div id="game-boxes" class="col game-boxes">
-                            <div  id="box1" class="box b-l-n b-t-n"><span></span></div>
-                            <div  id="box2" class="box b-t-n"><span></span></div>
-                            <div  id="box3" class="box b-t-n b-r-n"><span></span></div>
-                            <div  id="box4" class="box b-l-n"><span></span></div>
-                            <div  id="box5" class="box"><span></span></div>
-                            <div  id="box6" class="box b-r-n"><span></span></div>
-                            <div  id="box7" class="box b-l-n b-b-n "><span></span></div>
-                            <div  id="box8" class="box b-b-n "><span></span></div>
-                            <div  id="box9" class="box b-r-n b-b-n"><span></span></div>
-                            <div id="gameover" class="gameover form-card "></div>
-                            <div id="options" class="options form-card ">
+                            <div  id="0" class="box b-l-n b-t-n text-center"></div>
+                            <div  id="1" class="box b-t-n text-center"></div>
+                            <div  id="2" class="box b-t-n b-r-n text-center"></div>
+                            <div  id="3" class="box b-l-n text-center"></div>
+                            <div  id="4" class="box text-center"></div>
+                            <div  id="5" class="box b-r-n text-center"></div>
+                            <div  id="6" class="box b-l-n b-b-n text-center"></div>
+                            <div  id="7" class="box b-b-n text-center"></div>
+                            <div  id="8" class="box b-r-n b-b-n text-center"></div>
+                            <div id="gameover" class="gameover form-card text-center"></div>
+                            <div id="options" class="options form-card text-center">
                                 <p>X player</p>
                                 <label class="checkbox">Human
-                                      <input type="radio" name="X-radio">
+                                      <input id="humanX" type="radio" name="X-radio" value="human-X">
                                       <span class="checkmark"></span>
                                     </label>
 
-                                    <label class="checkbox">Computer
-                                      <input type="radio" name="X-radio">
+                                    <label  class="checkbox">Computer
+                                      <input id="computerX" type="radio" name="X-radio" value="computer-X" >
                                       <span class="checkmark"></span>
                                     </label>
                                 <p>O Player</p>
-                                <label class="checkbox">Human
-                                      <input type="radio" name="Y-radio">
+                                <label  class="checkbox">Human
+                                      <input id="humanO" type="radio" name="O-radio" value="human-O">
                                       <span class="checkmark"></span>
                                     </label>
-                                    <label class="checkbox">Computer
-                                      <input type="radio"name="Y-radio">
-                                      <span class="checkmark"></span>
-                                    </label>
-                                <button class="btn btn-continue">Continue</button>
+                                <button id="continue" class="btn btn-continue">Continue</button>
                             </div>
                         </div>
                          
                         <div class="card-content">
                            <div id="Start-Game" class="Start-Game btn" >Start Game
                            </div>
-                            <div id="score" class="score">
-                                <span id="score-X" >X: 0 |</span>
-                                <span id="score-Y" >O: 0 </span>
-                            </div>
+                           <div id="Restart-Game" class="Restart-Game btn" >Play Again
+                           </div>
                     </div>
                 </div>
         </div>
