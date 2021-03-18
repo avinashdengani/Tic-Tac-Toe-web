@@ -339,7 +339,7 @@ body{
         font-size: .6rem;
     }
 }
-@media(min-width: 500px) and (max-width: 714px){
+@media(min-width: 320px) and (max-width: 714px){
      .main-heading{
         font-size: 1.8rem;
     }
@@ -354,13 +354,10 @@ body{
         margin:auto;
     }
     .card{
-        width: 90%;
+        width: 110%;
         margin:auto;
     }
     .card-content .btn{
         font-size: .6rem;
     }
-}
-.image{
-    display: flex;
 }
