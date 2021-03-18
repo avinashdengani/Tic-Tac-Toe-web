@@ -11,13 +11,15 @@
         <link rel="stylesheet" href="normalize.css" >
         <!--app.css-->
         <link rel="stylesheet" href="app.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        
         <div class="container">
             <!--<div class="image-X">
                <img src="images/X.png" alt="">
             </div>  -->        
-            <h1 class="text-center main-heading heading" ><span>T</span>IC-<span>T</span>AC-<span>T</span>OE</h1>
+            <h1 class="text-center main-heading heading" ><span>T</span>IC <span>T</span>AC <span>T</span>OE</h1>
                 <div class="rules-box">
                   <h4 class="heading" ><span>G</span>AME <span>R</span>ULES:</h4>
                        <ul>
@@ -48,20 +50,24 @@
                             <div  id="6" class="box b-l-n b-b-n text-center"></div>
                             <div  id="7" class="box b-b-n text-center"></div>
                             <div  id="8" class="box b-r-n b-b-n text-center"></div>
-                            <div id="gameover" class="gameover form-card text-center"></div>
+                            
+                            <div id="gameover-block" class="gameover-block form-card" >
+                                <div  id="gameover" class="gameover  text-center"></div>
+                                <div id="Restart-Game" class="Restart-Game btn text-center" >Play Again</div> 
+                            </div>
                             <div id="options" class="options form-card text-center">
-                                <p>X player</p>
-                                <label class="checkbox">Human
+                                <p>Choose Player 'X'</p>
+                                <label class="checkbox text-left">Human
                                       <input id="humanX" type="radio" name="X-radio" value="human-X">
                                       <span class="checkmark"></span>
                                     </label>
 
-                                    <label  class="checkbox">Computer
+                                    <label  class="checkbox text-left">Computer
                                       <input id="computerX" type="radio" name="X-radio" value="computer-X" >
                                       <span class="checkmark"></span>
                                     </label>
-                                <p>O Player</p>
-                                <label  class="checkbox">Human
+                                <p>Choose Player 'O'</p>
+                                <label  class="checkbox text-left">Human
                                       <input id="humanO" type="radio" name="O-radio" value="human-O">
                                       <span class="checkmark"></span>
                                     </label>
@@ -71,8 +77,6 @@
                          
                         <div class="card-content">
                            <div id="Start-Game" class="Start-Game btn" >Start Game
-                           </div>
-                           <div id="Restart-Game" class="Restart-Game btn" >Play Again
                            </div>
                     </div>
                 </div>

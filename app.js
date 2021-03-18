@@ -11,11 +11,10 @@ let start;
 let random;
 let count =0;
 let restart;
+let moves = 0;
+let check = 1;
 //Null Array to fill X and O
 const spaces = [null, null, null, null, null, null, null, null, null];
-
-//Constant for Player's turn
-const turn = document.getElementById('turn');
 
 //Winning Conditions 
 const winningConditions = [
@@ -49,10 +48,10 @@ function hide(id){
 /********************************************************************************/
 
 //Some popups to hide at beginning
-hide('Restart-Game');
+
 hide('turn');
 hide('options');
-hide('gameover');
+hide('gameover-block')
 
 //Function to accept input from radio Buttons
 function radioOption(){
@@ -70,7 +69,7 @@ function radioOption(){
     //Computer VS Human
     else if(computerX.checked == true && humanO.checked == true ){
         hide('options');
-            compVSHuman();
+        compVSHuman();
     }
     else{
         alert("No Option Selected");
@@ -86,9 +85,6 @@ function startGame(e){
         hide('Start-Game');
         show('options');
         show('turn');
-        boxes.forEach((box,index) =>{
-        box.addEventListener('click', boxClicked);  
-});
     }
     playing = !playing;
 }
@@ -98,80 +94,96 @@ function myRandom(){
     random = Math.round((Math.random() *1));
     if(random === 0){
         currentPlayer = O_TEXT;
-        //console.log(currentPlayer);
         setText('turn' , currentPlayer+"'s turn");
     }else{
         currentPlayer = X_TEXT;
-        //console.log(currentPlayer);
         setText('turn' , currentPlayer+"'s turn");
     }
 }
 
-//called myRandom function
-myRandom();
-
-//Function to run event boxClicked
-function boxClicked(e){
+//event function box clicked For Human vs Human mode 
+function boxClickedForHuman(e){
     const id = e.target.id;
-    if(!spaces[id] && flag == true){
+    if(!spaces[id] && flag == true ){
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
         currentPlayer = currentPlayer == O_TEXT? X_TEXT:O_TEXT;
         setText('turn' , currentPlayer+"'s turn");
+        count++;
         winX();
         winO();
-        draw();
+    }
+};
+
+//event function box clicked For Computer vs Human mode
+function boxClickedForComp(e){
+    console.log(count);
+    currentPlayer = O_TEXT?O_TEXT:X_TEXT;
+    const id = e.target.id;
+    if(!spaces[id] && flag == true && currentPlayer == O_TEXT && check == 1){
+        setText('turn' , "Computer's turn");
+        spaces[id] = currentPlayer;
+        e.target.innerText = currentPlayer;
+        count++;
+        winX();
+        winO();
+        check = 0;
+    } 
+    if(check == 0){
+        setTimeout(function(){
+            setText('turn' , "Your's turn");
+            while(moves!=1 && flag == true){
+            let position = Math.round((Math.random()*8));
+                if(boxes[position].textContent === ""){
+                boxes[position].textContent = X_TEXT;
+                count++;
+                spaces[position] = X_TEXT;
+                moves = 1;
+                check = 1;
+                winX();
+                winO();
+                }
+            }
+        }, 1000);
+        moves = 0;
     }
 };
   
-
 //A Continue button to start a game after taking input from player
 const Continue = document.getElementById("continue").addEventListener('click',radioOption);
 
-//A function which will generate X at random location
-function generateX(){
-    let position = Math.round((Math.random() *8));
-   // console.log(position);
-    if(boxes[position].textContent === ""){
-        boxes[position].textContent = "X";
-    }
-}
-
-//A function which will generate O at random location
-function generateO(){
-    let position = Math.round((Math.random() *8));
-  //  console.log(position);
-   if(boxes[position].textContent === ""){
-        boxes[position].textContent = "O";
-    }
-}
-
 //A function to start Human vs Human match
-function humanVSHuman(e){
-    //console.log("HumanVSHuman");
-    boxClicked;
+function humanVSHuman(){
+    myRandom();
+    boxes.forEach((box,index) =>{
+    box.addEventListener('click', boxClickedForHuman);  
+});
 }
 
 //A function to start Computer vs Human match
-function compVSHuman(e){
-    //console.log("compVSHuman");
+function compVSHuman(){
+   currentPlayer = O_TEXT;
+   setText('turn' , "Your's turn");
+   boxes.forEach((box,index) =>{
+        box.addEventListener('click', boxClickedForComp);           
+});
+
 }
 
 //A function to display draw 
 function draw(){
-    if(count == 9){
+    if(count >= 9 && flag == true){
         hide('turn');
-        setText('gameover', "<p class='text-center' >GAME-OVER <br> Match has been Drawn! </p>" );
-        show("gameover");
+        setText('gameover', "<p class='text-center' >GAME-OVER <br> Match has been Drawn! </p>");
+        show("gameover-block");
         flag = false;
-        show('Restart-Game');
         restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
     }
 } 
 
 //Function to check X winning conditions
 function winX(e){
-    count++;
+    
     for (i = 0; i < 8; i++) {
         let c = winningConditions[i];
         
@@ -179,15 +191,20 @@ function winX(e){
         let r = boxes[c[1]].textContent;
         let s = boxes[c[2]].textContent;
         
-        if(q == r && r == s && s == "X"){
+       /* console.log(boxes[c[0]]);
+        console.log(r);
+        console.log(s);*/
+        if(q == r && r == s && s == X_TEXT){
             hide('turn');
             setText('gameover', "<p class='text-center' >GAME-OVER <br> Player X wins! </p>" );
-            show("gameover");
+            show("gameover-block");
             flag = false;
-            show('Restart-Game');
             restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
+            break;
         }
-    }    
+    }
+    
+    draw();
 }
 
 //Function to check O winning conditions
@@ -203,13 +220,14 @@ function winO(e){
         if(q == r && r == s && s == "O"){
             hide('turn');
             setText('gameover', "<p class='text-center' >GAME-OVER <br> Player O wins! </p>" );
-            show("gameover");
+            show("gameover-block");
             flag = false;
-            show('Restart-Game');
             restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
         }
-    }           
+    }
+    draw();
 }
+//A function to reload Page after Game-Over
 function reloadPage(){
     location.reload();
 }
