@@ -103,10 +103,17 @@ function myRandom(){
 
 //event function box clicked For Human vs Human mode 
 function boxClickedForHuman(e){
-    const id = e.target.id;
+    const id = e.target.id;  
     if(!spaces[id] && flag == true ){
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
+        if(currentPlayer == "X"){
+            var element = document.querySelectorAll(".box");
+            element[id].classList.add("color-red")
+        }else{
+            var element = document.querySelectorAll(".box");
+            element[id].classList.add("color-blueviolet")
+        }
         currentPlayer = currentPlayer == O_TEXT? X_TEXT:O_TEXT;
         setText('turn' , currentPlayer+"'s turn");
         count++;
@@ -117,13 +124,15 @@ function boxClickedForHuman(e){
 
 //event function box clicked For Computer vs Human mode
 function boxClickedForComp(e){
-    console.log(count);
+    
     currentPlayer = O_TEXT?O_TEXT:X_TEXT;
     const id = e.target.id;
     if(!spaces[id] && flag == true && currentPlayer == O_TEXT && check == 1){
         setText('turn' , "Computer's turn");
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
+        var element = document.querySelectorAll(".box");
+        element[id].classList.add("color-blueviolet")
         count++;
         winX();
         winO();
@@ -135,13 +144,15 @@ function boxClickedForComp(e){
             while(moves!=1 && flag == true){
             let position = Math.round((Math.random()*8));
                 if(boxes[position].textContent === ""){
-                boxes[position].textContent = X_TEXT;
-                count++;
-                spaces[position] = X_TEXT;
-                moves = 1;
-                check = 1;
-                winX();
-                winO();
+                    boxes[position].textContent = X_TEXT;
+                    var element = document.querySelectorAll(".box");
+                    element[position].classList.add("color-red")
+                    count++;
+                    spaces[position] = X_TEXT;
+                    moves = 1;
+                    check = 1;
+                    winX();
+                    winO();
                 }
             }
         }, 1000);
@@ -177,7 +188,7 @@ function draw(){
         setText('gameover', "<p class='text-center' >GAME-OVER <br> Match has been Drawn! </p>");
         show("gameover-block");
         flag = false;
-        restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
+        restart = document.getElementById("Play-Again").addEventListener('click',reloadPage);
     }
 } 
 
@@ -187,23 +198,33 @@ function winX(e){
     for (i = 0; i < 8; i++) {
         let c = winningConditions[i];
         
-        let q = boxes[c[0]].textContent;
-        let r = boxes[c[1]].textContent;
-        let s = boxes[c[2]].textContent;
+        let q = boxes[c[0]];
+        let r = boxes[c[1]];
+        let s = boxes[c[2]];
         
        /* console.log(boxes[c[0]]);
         console.log(r);
         console.log(s);*/
-        if(q == r && r == s && s == X_TEXT){
+        if(q.textContent == r.textContent && r.textContent == s.textContent && s.textContent == X_TEXT){
+            flag = false;
+            q.textContent = "";
+            q.classList.add("fa");
+            q.classList.add("fa-heart");
+            r.textContent = ""
+            r.classList.add("fa");
+            r.classList.add("fa-heart");
+            s.textContent = ""
+            s.classList.add("fa");
+            s.classList.add("fa-heart");
+            setTimeout(function(){
             hide('turn');
             setText('gameover', "<p class='text-center' >GAME-OVER <br> Player X wins! </p>" );
             show("gameover-block");
-            flag = false;
-            restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
-            break;
+            restart = document.getElementById("Play-Again").addEventListener('click',reloadPage);
+            //break;
+            }, 2000)   
         }
     }
-    
     draw();
 }
 
@@ -213,16 +234,29 @@ function winO(e){
     for (i = 0; i < 8; i++) {
         let c = winningConditions[i];
         
-        let q = boxes[c[0]].textContent;
-        let r = boxes[c[1]].textContent;
-        let s = boxes[c[2]].textContent;
-        
-        if(q == r && r == s && s == "O"){
+        let q = boxes[c[0]];
+        let r = boxes[c[1]];
+        let s = boxes[c[2]];
+        if(q.textContent == r.textContent && r.textContent == s.textContent && s.textContent == O_TEXT){
+            flag = false;
+            q.textContent = "";
+            q.classList.add("fa");
+            q.classList.add("fa-heart");
+            r.textContent = ""
+            r.classList.add("fa");
+            r.classList.add("fa-heart");
+            s.textContent = ""
+            s.classList.add("fa");
+            s.classList.add("fa-heart");
+            setTimeout(function(){
             hide('turn');
             setText('gameover', "<p class='text-center' >GAME-OVER <br> Player O wins! </p>" );
             show("gameover-block");
-            flag = false;
-            restart = document.getElementById("Restart-Game").addEventListener('click',reloadPage);
+            
+            restart = document.getElementById("Play-Again").addEventListener('click',reloadPage);
+            //break;
+            }, 1000)
+            
         }
     }
     draw();

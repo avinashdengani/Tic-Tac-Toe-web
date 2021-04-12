@@ -2,7 +2,7 @@ body{
     font-family: Lato, sans-serif;
     margin: 0;
     background: #1a1a1a;
-}
+    }
 ::selection{
     background: #FFF;
     color: #000;
@@ -214,13 +214,20 @@ body{
 }
 .box{
     background: #FFF;
-    color: blueviolet;
+    /* color: blueviolet; */
     border: solid 4px #333; 
     width: 6rem;
     height: 6rem;
     font-size: 6rem;
     user-select: none;
 }
+.color-red{
+    color: rgb(255,99,71);
+}
+.color-blueviolet{
+    color: blueviolet;
+}
+
 .b-t-n{
     border-top: solid 2px #FFF;
 }
@@ -244,9 +251,12 @@ body{
   box-shadow: 0px 0px 25px 0px 	rgb(0,0,0,0.8);
   cursor: pointer;
 }
-.box:active{
+.color-blueviolet:active, .color-blueviolet:hover{
     box-shadow: 0px 0px 25px 0px blueviolet;
 }
+.color-red:active, .color-red:hover{
+    box-shadow:  0px 0px 25px 0px rgb(255,99,71);
+ }
 @media(min-width: 1201px) and (max-width: 1400px){
     .container{
         margin: auto;
